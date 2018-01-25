@@ -7,8 +7,10 @@ var store = {
     minCust = 23,
     maxCust = 65,
     avgCook = 6.3,
-    function getRandomInt(minCust, maxCust) {
-        min = Math.ceil()
+    function getRandomIntInclusive(min, max) {}
+        min = Math.ceil(minCust);
+        max = Math.floor(maxCust);
+        return Math.floor(Math.random() * (max-min +1)) + min, 
     }
 }
 
@@ -39,6 +41,3 @@ var store = {
     maxCust = 16,
     avgCook = 4.6,
 }
-//function getRandomIntInclusive
-
-
