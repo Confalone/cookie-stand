@@ -1,8 +1,12 @@
 * {
 background-Color: Salmon;
+font-family: Georgia;
+color: green;
 }
 body {
     background-color: pink;
 }
 
-h2 {font-family: 'Roboto'}
+h2 {font-family: 'Roboto'; color: black}
+
+td {font-family: Arial; color: blue}
