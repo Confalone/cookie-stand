@@ -8,7 +8,7 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max-min +1)) + min;
 }
 
-var store = {
+var firstPike = {
     location = '1st and Pike',
     minCust = 23,
     maxCust = 65,
@@ -16,28 +16,28 @@ var store = {
     getRandomIntInclusive();
 }
 
-var store = {
+var seaTac = {
     location = 'SeaTac Airport',
     minCust = 3,
     maxCust = 24,
     avgCook = 1.2,
 }
 
-var store = {
+var seaCenter = {
     location = 'Seatle Center',
     minCust = 11,
     maxCust = 38,
     avgCook = 3.7,
 }
 
-var store = {
+var cHill = {
     location = 'Capitol Hill',
     minCust = 20,
     maxCust = 38,
     avgCook = 2.3,
 }
 
-var store = {
+var Alki = {
     location = 'Alki',
     minCust = 2,
     maxCust = 16,
