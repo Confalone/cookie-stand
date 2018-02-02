@@ -9,17 +9,17 @@ var firstPike = {
   avgCook: 6.3,
   perHour: [],
   netSales: 0,
-
   randomCust: function(){
     return Math.random() * (this.maxCust - this.minCust + 1) + this.minCust;
   },
   makePerHour: function(){
     for (var i = 0; i < hours.length; i++) {
-      var random = Math.floor(this.randCust() * this.avgCook);
+      var random = Math.floor(this.randomCust() * this.avgCook);
       this.perHour.push(random);
       this.netSales += random;
     }
   },
+
   makeTable: function(){
     this.makePerHour();
     var locEle = document.getElementById('loc1');
@@ -36,12 +36,10 @@ var firstPike = {
     locEle.appendChild(tableEle);
   }
 };
-document.getElementById('loc1').addEventListener('click',function(){ showTable('loc1');});
-function showTable(){
-  {
-    firstPike.makeTable();
-  }
-}
+
+firstPike.makeTable();
+
+
 var seaTac= {
   loc: 'SeaTac Airport',
   minCust: 3,
@@ -54,11 +52,12 @@ var seaTac= {
   },
   makePerHour: function(){
     for (var i = 0; i < hours.length; i++) {
-      var random = Math.floor(this.randCust() * this.avgCook);
+      var random = Math.floor(this.randomCust() * this.avgCook);
       this.perHour.push(random);
       this.netSales += random;
     }
   },
+
   makeTable: function(){
     this.makePerHour();
     var locEle = document.getElementById('loc2');
@@ -75,12 +74,9 @@ var seaTac= {
     locEle.appendChild(tableEle);
   }
 };
-document.getElementById('loc2').addEventListener('click',function(){ showTable2('loc2');});
-function showTable2(){
-  {
-    seaTac.makeTable();
-  }
-}
+
+seaTac.makeTable();
+
 var center= {
   loc: 'Seattle Center',
   minCust: 11,
@@ -93,11 +89,12 @@ var center= {
   },
   makePerHour: function(){
     for (var i = 0; i < hours.length; i++) {
-      var random = Math.floor(this.randCust() * this.avgCook);
+      var random = Math.floor(this.randomCust() * this.avgCook);
       this.perHour.push(random);
       this.netSales += random;
     }
   },
+
   makeTable: function(){
     this.makePerHour();
     var locEle = document.getElementById('loc3');
@@ -114,12 +111,8 @@ var center= {
     locEle.appendChild(tableEle);
   }
 };
-document.getElementById('loc3').addEventListener('click',function(){ showTable3('loc3');});
-function showTable3(){
-  {
-    center.makeTable();
-  }
-}
+center.makeTable();
+
 
 var hill= {
   loc: 'Capitol Hill',
@@ -133,14 +126,15 @@ var hill= {
   },
   makePerHour: function(){
     for (var i = 0; i < hours.length; i++) {
-      var random = Math.floor(this.randCust() * this.avgCook);
+      var random = Math.floor(this.randomCust() * this.avgCook);
       this.perHour.push(random);
       this.netSales += random;
     }
   },
+
   makeTable: function(){
     this.makePerHour();
-    var locEle = document.getElementById('loc2');
+    var locEle = document.getElementById('loc4');
     var tableEle = document.createElement('ul');
     for (var i = 0; i < hours.length; i++){
       var rowEle = document.createElement('li');
@@ -154,12 +148,7 @@ var hill= {
     locEle.appendChild(tableEle);
   }
 };
-document.getElementById('loc4').addEventListener('click',function(){ showTable4('loc4');});
-function showTable4(){
-  {
-    hill.makeTable();
-  }
-}
+hill.makeTable();
 
 var alki= {
   loc: 'Alki',
@@ -173,11 +162,12 @@ var alki= {
   },
   makePerHour: function(){
     for (var i = 0; i < hours.length; i++) {
-      var random = Math.floor(this.randCust() * this.avgCook);
+      var random = Math.floor(this.randomCust() * this.avgCook);
       this.perHour.push(random);
       this.netSales += random;
     }
   },
+
   makeTable: function(){
     this.makePerHour();
     var locEle = document.getElementById('loc5');
@@ -194,9 +184,5 @@ var alki= {
     locEle.appendChild(tableEle);
   }
 };
-document.getElementById('loc5').addEventListener('click',function(){ showTable5('loc5');});
-function showTable5(){
-  {
-    alki.makeTable();
-  }
-}
+
+alki.makeTable();
