@@ -1,0 +1,22 @@
+* {
+background-Color: Salmon;
+font-family: Georgia;
+color: green;
+}
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: white;
+}
+h2 {font-family: 'Roboto'; color: black}
+
+td {font-family: Arial; color: blue}
+th {color: black}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
