@@ -21,12 +21,38 @@ function MakeLocation(
   this.cookPerHour =  [];
   this.totalCookies = 0;
   allLoc.push(this);}
-  this.calcRandCustByHour= funtion () {
-   //methods   
-  }
-}
 
-//functin Cookies (minCust, maxCust) {
+
+  this.calcRandCustByHour= function () {
+    for (var i=0; i< hours.length; i++) {
+    this.randomCustByHour.push(
+      Math.floor(
+        Math.random() * (this.maxCust -this.minCust + 1)
+      ) + this.minCust
+    );
+    console.log(this.randomCustByHour[i]);
+  }
+},
+calCookPerHour: function() {
+  for (var j = 0; j < hours.length; j++) {
+    this.cookPerHour.push(
+      Math.round(this.avgCook * this.randomCustByHour[j])
+    );
+    console.log(this.cookPerHour[j]);
+  }
+},
+
+render: function () {
+ var firstPike = document.getElementById("firstPike");
+ var 
+}
+   //methods   
+   SeaTac Airport</li>
+   <li>Seattle Center</li>
+   <li>Capitol Hill</li>
+   <li>Alki</li>
+
+// function Cookies (minCust, maxCust) {
 //  this.minCust = minCust;
 //  this.maxCust = maxCust;
 //  this.avgCookies = function () {return (this.minCust - this.maxCust)*2}
