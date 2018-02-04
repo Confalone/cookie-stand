@@ -1,5 +1,6 @@
 'use strict';
-var sales = document.getElementById('cookSales');
+var sales = document.getElementById('cook-sales');
+var tableFooter = document.getElementById('table-footer');
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allLoc =[];
 var totHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -103,6 +104,7 @@ function makeFooter(sales) {
   var makeRow = document.createElement('tr');
   var cellLoc = document.createElement('td');
   cellLoc.textContent = 'Total';
+  makeRow.setAttribute('id','footerRow');
   makeRow.appendChild(cellLoc);
   for (var i = 0; i < hours.length; i++) {
     var makeCell = document.createElement('td');
@@ -114,6 +116,39 @@ function makeFooter(sales) {
   cellTot.textContent = 'Total Cookies';
   makeRow.appendChild(cellTot);
 
-  sales.appendChild(makeRow);
+  tableFooter.appendChild(makeRow);
 }
 makeFooter(sales);
+
+
+var cookForm = document.getElementById('cook-form');
+//console.log(cookForm);
+
+function handleAddStore(event) {
+  event.preventDefault();
+
+  var sales = document.getElementById('cookSales');
+  // if(!event.target.loc.value ||event.target.mincust.value || !event.target.maxcust.value || !event.target.avgcook.value) {
+  //   return alert('Please add a store, the function only works well if u enter a store');
+  // }
+
+  var newLoc = event.target.loc.value;
+  var newLocMinCust = parseInt(event.target.mincust.value);
+  var newLocMaxCust = parseInt(event.target.maxcust.value);
+  var newLocAvgCook = parseInt(event.target.avgcook.value);
+
+  var newStore = new MakeLocation(newLoc, newLocMinCust, newLocMaxCust, newLocAvgCook);
+  //console.log (newStore);
+  var footerRow = document.getElementById('footerRow');
+  //sales.removeChild(footerRow);
+
+  newStore.render(allLoc.length -1);
+  makeFooter();
+
+  event.target.locname.value = null;
+  event.target.mincust.value = null;
+  event.target.maxcust.value = null;
+  event.target.avgcook.value = null;
+}
+
+cookForm.addEventListener('submit', handleAddStore);

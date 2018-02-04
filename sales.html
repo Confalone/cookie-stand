@@ -7,7 +7,24 @@
     <img src="https://raw.githubusercontent.com/codefellows/seattle-201n10/master/class-06-dom-objects-domain_modeling/lab/assets/salmon.png" alt="Good looking Salmon">
 <body>
     <h1>Salmon Cookies</h1>
-    <table id="cookSales">
+    <form id="cook-form">
+        <fieldset>
+            <legend>Add Store Location</legend>
+            <label for ="loc">Name of Location</label>
+            <input name ="loc" type="text"/>
+            <label for="mincust">Minimum Customers per Hour: </label>
+            <input name="mincust" type="text" />
+            <label for="maxcust">Maximum Customers per Hour: </label>
+            <input name="maxcust" type="text" />
+            <label for="avgcook">Average Cookies per Sale: </label>
+            <input name="avgcook" type="text"/>
+            <button type="submit">Create a New Store</button>
+        </fieldset>
+    </form>
+    <table id="cook-sales">
+        <div> 
+            <tfoot id = "table-footer"></tfoot>
+        </div>
     </table>
 <script src = "sales.js"></script>
 </body>
