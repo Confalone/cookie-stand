@@ -1,108 +1,119 @@
 'use strict';
-
+var sales = document.getElementById('cookSales');
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-
 var allLoc =[];
-
-var totalCookiesByHour = 0;
-var netTotal = 0;
+var totHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function MakeLocation(
   loc,
   minCust,
   maxCust,
   avgCook
-)  {
+) {
   this.loc = loc;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCook = avgCook;
   this.randomCustByHour = [];
-  this.cookPerHour =  [];
+  this.cookPerHour = [];
   this.totalCookies = 0;
-  allLoc.push(this);}
+  allLoc.push(this);
 
 
-  this.calcRandCustByHour= function () {
+  this.calcRandCustByHour = function () {
     for (var i=0; i< hours.length; i++) {
-    this.randomCustByHour.push(
-      Math.floor(
-        Math.random() * (this.maxCust -this.minCust + 1)
-      ) + this.minCust
-    );
-    console.log(this.randomCustByHour[i]);
-  }
-},
-calCookPerHour: function() {
-  for (var j = 0; j < hours.length; j++) {
-    this.cookPerHour.push(
-      Math.round(this.avgCook * this.randomCustByHour[j])
-    );
-    console.log(this.cookPerHour[j]);
-  }
-},
+      this.randomCustByHour.push(
+        Math.floor(
+          Math.random() * (this.maxCust - this.minCust + 1)
+        ) + this.minCust
+      );
+      // console.log(this.randomCustByHour[i]);
+    }
+  },
+  this.calcCookPerHour = function() {
+    for (var i = 0; i < hours.length; i++) {
+      var randnum = Math.round(this.avgCook * this.randomCustByHour[i]);
+      this.cookPerHour.push(
+        randnum
+      );
+      this.totalCookies+=randnum;
+      // console.log(this.cookPerHour[i]);
+    }
+  },
+  this.render = function (sales) {
+    var makeRow = document.createElement('tr');
+    var cellLoc = document.createElement('td');
+    cellLoc.textContent = this.loc;
+    makeRow.appendChild(cellLoc);
 
-render: function () {
- var firstPike = document.getElementById("firstPike");
- var 
+    for (var i = 0; i < hours.length; i++) {
+      var makeCell = document.createElement('td');
+      makeCell.textContent = this.cookPerHour[i];
+      makeRow.appendChild(makeCell);
+    }
+
+    var cellTot = document.createElement('td');
+    cellTot.textContent = this.totalCookies;
+    makeRow.appendChild(cellTot);
+
+    sales.appendChild(makeRow);
+  };
+
+  this.calcRandCustByHour();
+  this.calcCookPerHour();
+  this.render(sales);
+
+  for (var i = 0; i < hours.length; i++) {
+    totHour[i] += this.cookPerHour[i];
+  }
+
 }
-   //methods   
-   SeaTac Airport</li>
-   <li>Seattle Center</li>
-   <li>Capitol Hill</li>
-   <li>Alki</li>
+function makeHeader(sales) {
+  var makeRow = document.createElement('tr');
+  var cellLoc = document.createElement('td');
+  cellLoc.textContent = '';
+  makeRow.appendChild(cellLoc);
 
-// function Cookies (minCust, maxCust) {
-//  this.minCust = minCust;
-//  this.maxCust = maxCust;
-//  this.avgCookies = function () {return (this.minCust - this.maxCust)*2}
+  for (var i = 0; i < hours.length; i++) {
+    var makeCell = document.createElement('td');
+    makeCell.textContent = hours[i];
+    makeRow.appendChild(makeCell);
+  }
 
+  var cellTot = document.createElement('td');
+  cellTot.textContent = 'Total Cookies';
+  makeRow.appendChild(cellTot);
 
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(minCust);
-    max = Math.floor(maxCust);
-    return Math.floor(Math.random() * (max-min +1)) + min;
+  sales.appendChild(makeRow);
 }
-//call the functions in a function if you want
-//this constructor function creates five new objects with their own unique values used in properties of this object (name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour)
-function makeStands() {
-    new MakeLocation("First and Pike", 23, 65, 6.3);
-    new MakeLocation("SeaTac Airport", 3, 24, 1.2);
-    //make one for each store
+makeHeader(sales);
+
+
+function makeStands(totHour) {
+  new MakeLocation('First and Pike', 23, 65, 6.3);
+  new MakeLocation('SeaTac Airport', 3, 24, 1.2);
+  new MakeLocation('Seattle Center', 11, 38, 3.7);
+  new MakeLocation('Capitol Hill', 20, 38, 2.3);
+  new MakeLocation('Alki', 2, 16, 4.6);
+  //make one for each store
+}
+makeStands();
+
+function makeFooter(sales) {
+  var makeRow = document.createElement('tr');
+  var cellLoc = document.createElement('td');
+  cellLoc.textContent = 'Total';
+  makeRow.appendChild(cellLoc);
+  for (var i = 0; i < hours.length; i++) {
+    var makeCell = document.createElement('td');
+    makeCell.textContent = totHour[i];
+    makeRow.appendChild(makeCell);
   }
-  makeStands();
-  
-  //time to create the table in javascript
-  //make header row
-  //table needs an id in html
-  
-  function makeHeaderRow() {
-    var cookiestands = document.getElementById("cookiestands");
-    var trEl = document.createElement("tr");
-    var thEl = document.createElement("th");
-    trEl.appendChild(thEl);
-  }
-  
-  //consider a for loop for the hours
-  //create a th element
-  //give the th element some text content like hours[i];
-  //appendChild
-  
-  //create a th element
-  //give the th element text content 'Daily Location Total'
-  //append child
-  
-  //remeber to call makeHeaderRow();
-  
-var firstPike= new location ('1st andPike', 23,65,6.3);
 
-var seaTac = new location ('SeaTac Airport', 3, 24, 1.2);
+  var cellTot = document.createElement('td');
+  cellTot.textContent = 'Total Cookies';
+  makeRow.appendChild(cellTot);
 
-var seaCenter = new location ('Seattle Center', 11,38, 3.7);
-
-var cHill = new location ('Capitol Hill', 20,38,2.3);
-
-var Alki = new location ('Alki', 2, 16,4.6);
-
-cookies ();
-getRandomIntInclusive();
+  sales.appendChild(makeRow);
+}
+makeFooter(sales);
