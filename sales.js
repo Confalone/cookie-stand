@@ -113,7 +113,7 @@ function makeFooter(sales) {
   }
 
   var cellTot = document.createElement('td');
-  cellTot.textContent = 'Total Cookies';
+  cellTot.textContent;
   makeRow.appendChild(cellTot);
 
   tableFooter.appendChild(makeRow);
