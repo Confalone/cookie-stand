@@ -3,7 +3,7 @@ var sales = document.getElementById('cook-sales');
 var tableFooter = document.getElementById('table-footer');
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allLoc =[];
-var totHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var totHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function MakeLocation(
   loc,
@@ -40,6 +40,7 @@ function MakeLocation(
       this.totalCookies+=randnum;
       // console.log(this.cookPerHour[i]);
     }
+    totHour[totHour.length -1] += this.totalCookies;
   },
   this.render = function (sales) {
     var makeRow = document.createElement('tr');
@@ -105,7 +106,7 @@ function makeFooter(sales) {
   cellLoc.textContent = 'Total';
   makeRow.setAttribute('id','footerRow');
   makeRow.appendChild(cellLoc);
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hours.length + 1; i++) {
     var makeCell = document.createElement('td');
     makeCell.textContent = totHour[i];
     makeRow.appendChild(makeCell);
