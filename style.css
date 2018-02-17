@@ -4,6 +4,7 @@ font-family: Georgia;
 color: green;
 font-family: 'Roboto', sans-serif;
 font-family: 'Open Sans', sans-serif;
+color: green;
 }
 
 .container {
@@ -29,6 +30,10 @@ body {
 
 h1 {
     color: white;
+}
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: blue;
 }
 h2 {font-family: 'Roboto'; color: black}
 

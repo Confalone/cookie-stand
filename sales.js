@@ -99,7 +99,6 @@ function makeStands(totHour) {
   //make one for each store
 }
 makeStands();
-
 function makeFooter(sales) {
   var makeRow = document.createElement('tr');
   var cellLoc = document.createElement('td');
@@ -120,14 +119,16 @@ function makeFooter(sales) {
 }
 makeFooter(sales);
 
+function removeFooter() {
+  var footerRow = document.getElementById('footerRow');
+  tableFooter.removeChild(footerRow);
+}
 
 var cookForm = document.getElementById('cook-form');
 //console.log(cookForm);
 
 function handleAddStore(event) {
   event.preventDefault();
-
-  var sales = document.getElementById('cookSales');
   // if(!event.target.loc.value ||event.target.mincust.value || !event.target.maxcust.value || !event.target.avgcook.value) {
   //   return alert('Please add a store, the function only works well if u enter a store');
   // }
@@ -141,14 +142,16 @@ function handleAddStore(event) {
   //console.log (newStore);
   var footerRow = document.getElementById('footerRow');
   //sales.removeChild(footerRow);
-
-  newStore.render(allLoc.length -1);
+  removeFooter();
   makeFooter();
-
-  event.target.locname.value = null;
+ 
+  event.target.loc.value = null;
   event.target.mincust.value = null;
   event.target.maxcust.value = null;
   event.target.avgcook.value = null;
 }
 
 cookForm.addEventListener('submit', handleAddStore);
+
+// where do i add parseint?
+// why dont my totals update?
